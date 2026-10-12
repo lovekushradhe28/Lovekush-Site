@@ -722,10 +722,16 @@
         </div>
     </div>
 
-    <!-- Audio Element - Only hacker.mp3 -->
-    <audio id="hackerSound" preload="auto" loop>
+    <!-- Audio Element - hacker.mp3 -->
+    <audio id="hackerSound" preload="auto" loop playsinline webkit-playsinline>
         <source src="hacker.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
+
+    <!-- Unmute Button for Mobile -->
+    <button id="unmuteBtn" style="display:none; position:fixed; bottom:20px; right:20px; z-index:99999; padding:12px 20px; background:rgba(0,255,0,0.2); border:2px solid #00ff00; color:#00ff00; font-weight:bold; border-radius:5px; cursor:pointer; font-family:'Courier New',monospace; box-shadow:0 0 15px #00ff00;">
+        🔊 TAP FOR SOUND
+    </button>
 
     <script>
         const cursor = document.querySelector('.cursor');
@@ -862,7 +868,35 @@
             });
         }
         
+        // Global function to play audio
+        function playHackerSound() {
+            const hackerSound = document.getElementById('hackerSound');
+            const unmuteBtn = document.getElementById('unmuteBtn');
+            
+            hackerSound.muted = false;
+            hackerSound.volume = 1.0;
+            
+            const playPromise = hackerSound.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log("✅ Audio playing");
+                    if (unmuteBtn) unmuteBtn.style.display = 'none';
+                }).catch(error => {
+                    console.log("❌ Audio blocked:", error);
+                    // Show unmute button on mobile
+                    if (unmuteBtn) unmuteBtn.style.display = 'block';
+                });
+            }
+        }
+        
         window.onload = function() {
+            const hackerSound = document.getElementById('hackerSound');
+            const unmuteBtn = document.getElementById('unmuteBtn');
+            
+            // Preload audio
+            if (hackerSound) hackerSound.load();
+            
             createMatrix();
             createBinaryRain();
             createParticles();
@@ -871,11 +905,10 @@
             const enterBtn = document.getElementById('enterBtn');
             const welcomeScreen = document.getElementById('welcomeScreen');
             const mainContent = document.getElementById('mainContent');
-            const hackerSound = document.getElementById('hackerSound');
             
+            // ENTER button click
             enterBtn.addEventListener('click', () => {
-                // Play hacker sound (looping)
-                hackerSound.play().catch(e => console.log("Audio play failed:", e));
+                playHackerSound();
                 
                 welcomeScreen.style.opacity = '0';
                 
@@ -893,6 +926,21 @@
                     }, 100);
                 }, 1500);
             });
+            
+            // Unmute button click (for mobile autoplay block)
+            if (unmuteBtn) {
+                unmuteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    playHackerSound();
+                });
+            }
+            
+            // Any click on page also tries to play
+            document.addEventListener('click', () => {
+                if (hackerSound && hackerSound.paused) {
+                    hackerSound.play().catch(e => console.log(e));
+                }
+            }, { once: false });
         };
         
         window.onresize = function() {
