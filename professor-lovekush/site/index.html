@@ -126,9 +126,7 @@
             transition: 0.5s;
         }
 
-        .enter-btn:hover::before {
-            left: 100%;
-        }
+        .enter-btn:hover::before { left: 100%; }
 
         .enter-btn:hover {
             background-color: rgba(0, 255, 0, 0.2);
@@ -228,11 +226,8 @@
             transition: transform 0.6s;
         }
 
-        .profile:hover::before {
-            transform: translateX(100%);
-        }
+        .profile:hover::before { transform: translateX(100%); }
 
-        /* ==== PROFILE PICTURE ==== */
         .profile-pic {
             width: 150px;
             height: 150px;
@@ -250,9 +245,7 @@
             box-shadow: 0 0 20px #00ff00;
         }
 
-        .profile-info {
-            flex: 1;
-        }
+        .profile-info { flex: 1; }
 
         .name {
             font-size: 2rem;
@@ -295,9 +288,7 @@
             transition: transform 0.5s;
         }
 
-        .bio:hover::before {
-            transform: scaleY(1);
-        }
+        .bio:hover::before { transform: scaleY(1); }
 
         .section-title {
             font-size: 1.6rem;
@@ -349,9 +340,7 @@
             transition: transform 0.6s;
         }
 
-        .bio-item:hover::before {
-            transform: translateX(100%);
-        }
+        .bio-item:hover::before { transform: translateX(100%); }
 
         .bio-item:hover {
             background-color: rgba(0, 50, 0, 0.4);
@@ -366,6 +355,300 @@
             margin-bottom: 8px;
             text-shadow: 0 0 3px #00ff00;
             letter-spacing: 1px;
+        }
+
+        .value {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skill {
+            background-color: rgba(0, 255, 0, 0.2);
+            border: 1px solid #00ff00;
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .skill:hover::before { transform: translateX(100%); }
+
+        .skill:hover {
+            background-color: rgba(0, 255, 0, 0.4);
+            transform: translateY(-3px) scale(1);
+            box-shadow: 0 0 8px #00ff00;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            padding: 12px 25px;
+            background-color: rgba(10, 20, 10, 0.7);
+            border: 1px solid;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .social-btn:hover::before { transform: translateX(100%); }
+
+        .telegram { border-color: #0088cc; color: #0088cc; }
+        .instagram { border-color: #e4405f; color: #e4405f; }
+        .youtube { border-color: #ff0000; color: #ff0000; }
+
+        .social-btn:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+        .telegram:hover { background-color: rgba(0, 136, 204, 0.2); box-shadow: 0 0 15px rgba(0, 136, 204, 0.7); }
+        .instagram:hover { background-color: rgba(228, 64, 95, 0.2); box-shadow: 0 0 15px rgba(228, 64, 95, 0.7); }
+        .youtube:hover { background-color: rgba(255, 0, 0, 0.2); box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); }
+
+        @keyframes welcomeGlow {
+            from { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+            to { text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00; }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+            to { text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; }
+        }
+
+        @keyframes titleUnderline {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        @keyframes sectionLine {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .binary-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .binary-digit {
+            position: absolute;
+            color: rgba(0, 255, 0, 0.7);
+            font-size: 14px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall { to { transform: translateY(100vh); } }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(0, 255, 0, 0.5);
+            border-radius: 50%;
+            animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            to { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .terminal-text {
+            background: rgba(0, 20, 0, 0.7);
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%);
+            background-size: 100% 4px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #00ff00;
+            animation: blink 1s infinite;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .animate-on-scroll { transition: all 0.8s ease-out; }
+        .fade-in-up { transform: translateY(50px); opacity: 0; }
+        .fade-in-left { transform: translateX(-100px); opacity: 0; }
+        .fade-in-right { transform: translateX(100px); opacity: 0; }
+        .fade-in-scale { transform: scale(0.8); opacity: 0; }
+        .active { transform: translate(0, 0) scale(1); opacity: 1; }
+
+        .floating { animation: floating 3s ease-in-out infinite; }
+
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, 0px); }
+        }
+
+        @media (max-width: 768px) {
+            .profile { flex-direction: column; text-align: center; }
+            .profile-pic { margin-right: 0; margin-bottom: 15px; }
+            .header-title { font-size: 1.5rem; }
+            .header-subtitle { font-size: 1.1rem; }
+            .name { font-size: 1.5rem; }
+            .welcome-title { font-size: 2rem; }
+            .welcome-subtitle { font-size: 1.2rem; }
+            .social-buttons { flex-direction: column; align-items: center; }
+            .section-title { font-size: 1.3rem; }
+            body { cursor: auto; }
+            .cursor, .cursor-follower { display: none; }
+        }
+
+        ::selection {
+            background-color: rgba(0, 255, 0, 0.3);
+            color: #ffffff;
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #001100; }
+        ::-webkit-scrollbar-thumb { background: #00ff00; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00cc00; }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+            <h1 class="welcome-title">SYSTEM ACCESS</h1>
+            <h2 class="welcome-subtitle">KNOW ABOUT ME - WHO AM I?</h2>
+            <p class="welcome-text">
+                Enter my digital domain to explore my skills and knowledge
+            </p>
+            <button class="enter-btn" id="enterBtn">ENTER SYSTEM</button>
+        </div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <div class="matrix-bg" id="matrixBg"></div>
+        <div class="binary-rain" id="binaryRain"></div>
+        <div class="particles" id="particles"></div>
+
+        <header>
+            <h1 class="header-title floating">WELCOME TO PROFESSOR LOVEKUSH WORLD</h1>
+            <h2 class="header-subtitle">WHO AM I?</h2>
+        </header>
+
+        <div class="container">
+            <div class="profile animate-on-scroll fade-in-left">
+                <img src="profile.jpg" alt="Professor Lovekush" class="profile-pic floating">
+                <div class="profile-info">
+                    <h2 class="name">PROFESSOR LOVEKUSH</h2>
+                    <p class="title">LEARNING x HACKING</p>
+                </div>
+            </div>
+
+            <div class="bio animate-on-scroll fade-in-right">
+                <h3 class="section-title">ABOUT ME</h3>
+                
+                <div class="bio-item animate-on-scroll fade-in-up">
+                    <div class="label">NICK NAME</div>
+                    <div class="value">GURJAR SABH</div>
+                </div>
+                
+                <div class="bio-item animate-on-scroll fade-in-up">
+                    <div class="label">MY KNOWLEDGE</div>
+                    <div class="value">
+                        <div class="skills">
+                            <span class="skill animate-on-scroll fade-in-scale">Ethical Expert</span>
+                            <span class="skill animate-on-scroll fade-in-scale">Coding</span>
+                            <span class="skill animate-on-scroll fade-in-scale">Python</span>
+                            <span class="skill animate-on-scroll fade-in-scale">JavaScript</span>
+                            <span class="skill animate-on-scroll fade-in-scale">HTML</span>
+                            <span class="skill animate-on-scroll fade-in-scale">CSS</span>
+                            <span class="skill animate-onter-spacing: 1px;
         }
 
         .value {
